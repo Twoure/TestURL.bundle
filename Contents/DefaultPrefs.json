@@ -1,0 +1,8 @@
+[
+  {
+    "id": "add_page",
+    "label": "Log Return page",
+    "type": "bool",
+    "default": "False"
+  }
+]
