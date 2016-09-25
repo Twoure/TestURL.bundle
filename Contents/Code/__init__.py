@@ -71,6 +71,11 @@ def Search(query=''):
         tagline=u"Return '{0}' Service Code".format(url),
         summary=u"Return playable video stream for '{0}' if available.".format(url)
         ))
+    oc.add(PopupDirectoryObject(
+        key=Callback(m3u8Test, url=url), title='m3u8 Video Test',
+        tagline=u"Return '{0}' Service Code".format(url),
+        summary=u"Return playable video stream for '{0}' if available.".format(url)
+        ))
 
     return oc
 
@@ -114,4 +119,15 @@ def ServiceCodeTest(url):
     else:
         oc.header = header
         oc.message = u"Error: No URL ServiceCode exists for '{0}'".format(url)
+    return oc
+
+####################################################################################################
+@route(PREFIX + '/m3u8test')
+def m3u8Test(url):
+    oc = ObjectContainer(title2="m3u8 Video Test")
+    oc.add(VideoClipObject(
+        title='m3u8 video test',
+        url="m3u8.test://" + E(url.strip()),
+        thumb='http://i.imgur.com/75YO83o.jpg'
+        ))
     return oc
